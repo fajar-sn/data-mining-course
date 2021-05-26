@@ -2,6 +2,7 @@ import numpy
 import pandas
 from sklearn.tree import DecisionTreeClassifier
 
+
 def process_data(input_data):
     # Replace sex value
     data = input_data.replace("male", 1)
@@ -19,6 +20,7 @@ def process_data(input_data):
     data["Embarked"] = numpy.nan_to_num(data["Embarked"].astype(numpy.float32))
     return data
 
+
 # pandas.set_option('display.max_rows', None)
 
 def classify_dtc(data, label):
@@ -27,6 +29,7 @@ def classify_dtc(data, label):
     accuracy = decision_tree_classifier.score(test_data, test_label)
     error = round((1 - accuracy) * 100, 2)
     return error
+
 
 dataset = pandas.read_csv("assets/titanic.csv")
 train_label = pandas.DataFrame(dataset, columns=["Survived"])

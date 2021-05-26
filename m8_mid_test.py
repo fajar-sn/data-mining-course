@@ -13,11 +13,13 @@ for index, rows in data.iterrows():
     if math.isnan(rows["Age"]):
         test_data = test_data.append(rows, ignore_index=True)
 
+
 def to_min_max(current_value, min_data, max_data):
     new_min = 0
     new_max = 1
     new_value = ((current_value - min_data) * (new_max - new_min) / (max_data - min_data))
     return new_value
+
 
 def normalize_data(datas):
     datas["Sex"] = datas["Sex"].replace("female", 0)
@@ -43,6 +45,7 @@ def normalize_data(datas):
             value, datas_constraint["Fare"]["min"], datas_constraint["Fare"]["max"]))
 
     return datas
+
 
 train_data = normalize_data(train_data)
 test_data = normalize_data(test_data)
